@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors */
+  --red-accent-clr: 348, 100%, 50%;
+  --black-clr: hsl(0, 0%, 7%);
+
+  --green-clr: hsl(141, 79%, 53%);
+  --yellow-clr: hsl(43, 90%, 68%);
+  --red-clr: hsl(var(--red-accent-clr));
+
+  --input-bg-clr: hsl(216, 33%, 97%);
+  --dark-bg-clr: var(--black-clr);
+  --input-errors-bg-clr: hsla(var(--red-accent-clr), 0.05);
+  --modal-container-bg-clr: hsl(0, 0%, 0%, 0.4);
+
+  --input-text-clr: hsl(0, 0%, 42%);
+  --text-dark-clr: var(--black-clr);
+  --accent-text-clr: hsl(0, 0%, 24%);
+
+  --border-clr: hsl(0, 0%, 93%);
+
+  /* Font Family */
+  --heading-font-family: "Noto Serif Display", serif;
+  --body-font-family: "Satoshi", sans-serif;
+
+  /* Font Size */
+  --fs-small: clamp(0.75rem, 0.7143rem + 0.1786vw, 0.875rem);
+  --fs-x-small: clamp(0.625rem, 0.5893rem + 0.1786vw, 0.75rem);
+
+  --fs-heading-lg: clamp(1.5rem, 1.0714rem + 2.1429vw, 3rem);
+  --fs-heading-sm: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
+  --fs-body: clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem);
+  --fs-input-placeholder: var(--fs-small);
+  --fs-forgot-password: var(--fs-small);
+  --fs-errors: var(--fs-x-small);
+
+  /* Font Weight */
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 600;
+}
+
+@layer base {
+  @font-face {
+    font-family: "Noto Serif Display";
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+    src: url("./assets/fonts/noto-serif-display/noto-serif-display-medium.woff2")
+        format("woff2"),
+      url("./assets/fonts/noto-serif-display/noto-serif-display-medium.woff")
+        format("woff"),
+      url("./assets/fonts/noto-serif-display/noto-serif-display-medium.ttf");
+  }
+
+  @font-face {
+    font-family: "Satoshi";
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+    src: url("./assets/fonts/satoshi/satoshi-regular.woff2") format("woff2"),
+      url("./assets/fonts/satoshi/satoshi-regular.woff") format("woff"),
+      url("./assets/fonts/satoshi/satoshi-regular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Satoshi";
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+    src: url("./assets/fonts/satoshi/satoshi-medium.woff2") format("woff2"),
+      url("./assets/fonts/satoshi/satoshi-medium.woff") format("woff"),
+      url("./assets/fonts/satoshi/satoshi-medium.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Satoshi";
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+    src: url("./assets/fonts/satoshi/satoshi-bold.woff2") format("woff2"),
+      url("./assets/fonts/satoshi/satoshi-bold.woff") format("woff"),
+      url("./assets/fonts/satoshi/satoshi-bold.ttf") format("truetype");
+  }
+
+  html {
+    font-family: var(--body-font-family);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--heading-font-family);
+  }
+}
+
+.visually-hidden {
+  display: inline-block;
+  position: absolute;
+
+  height: 1px;
+  width: 1px;
+
+  border: 0;
+  clip: rect(0 0 0 0);
+
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+}
