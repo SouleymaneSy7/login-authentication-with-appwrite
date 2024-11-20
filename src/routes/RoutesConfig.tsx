@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import ProtectedRoute from "../components/ProtectedRoutes";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 import LogInPage from "../pages/LogInPage";
 import RegisterPage from "../pages/RegisterPage";
@@ -15,14 +15,10 @@ const RouterConfig: React.FC = () => {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path={"/login"} element={<LogInPage />} />
         <Route path={"/signup"} element={<RegisterPage />} />
-        <Route
-          path={"/success"}
-          element={
-            <ProtectedRoute>
-              <SuccessPage />
-            </ProtectedRoute>
-          }
-        />
+
+        <Route element={<ProtectedRoute />}>
+          <Route path={"/success"} element={<SuccessPage />} />
+        </Route>
 
         <Route path={"*"} element={<ErrorPage />} />
       </Routes>
