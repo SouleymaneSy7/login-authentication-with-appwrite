@@ -16,9 +16,14 @@ const RouterConfig: React.FC = () => {
         <Route path={"/login"} element={<LogInPage />} />
         <Route path={"/signup"} element={<RegisterPage />} />
 
-        <Route element={<ProtectedRoute />}>
-          <Route path={"/success"} element={<SuccessPage />} />
-        </Route>
+        <Route
+          path={"/success"}
+          element={
+            <ProtectedRoute>
+              <SuccessPage />
+            </ProtectedRoute>
+          }
+        />
 
         <Route path={"*"} element={<ErrorPage />} />
       </Routes>
