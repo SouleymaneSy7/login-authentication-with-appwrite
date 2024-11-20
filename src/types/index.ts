@@ -31,3 +31,8 @@ export interface SuccessPagePropsType {
   user: unknown | null;
   signOut: () => Promise<void>;
 }
+
+export interface ProviderButtonPropsType {
+  children: React.ReactNode;
+  providerName: "google" | "github" | "discord";
+}
