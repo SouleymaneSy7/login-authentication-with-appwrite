@@ -54,4 +54,5 @@ export interface AuthContextType {
     password: string
   ) => Promise<Models.Session | undefined>;
   signOut: () => Promise<void>;
+  errors: string;
 }
