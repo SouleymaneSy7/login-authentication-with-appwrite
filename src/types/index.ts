@@ -16,3 +16,19 @@ export type InputsPropsType = {
 export type VisuallyHiddenPropsType = {
   children: React.ReactNode;
 } & React.ComponentPropsWithoutRef<"span">;
+
+export interface FormInputPropsType {
+  ID: string;
+  inputType: "text" | "email" | "password";
+  inputPlaceholder: string;
+  inputValue?: string;
+  inputLabel: string;
+  inputSetter: React.ChangeEventHandler<HTMLInputElement>;
+  errors?: string | undefined;
+}
+
+
+
+
+
+
