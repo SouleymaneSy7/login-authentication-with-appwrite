@@ -1,7 +1,15 @@
 import React from "react";
 
+import Videos from "./components/Videos";
+import RouterConfig from "./routes/RoutesConfig";
+
 const App: React.FC = () => {
-  return <div>App</div>;
+  return (
+    <React.Fragment>
+      <Videos />
+      <RouterConfig />
+    </React.Fragment>
+  );
 };
 
 export default App;
