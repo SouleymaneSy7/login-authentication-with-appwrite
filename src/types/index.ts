@@ -44,7 +44,10 @@ export interface SuccessPagePropsType {
 export interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
-  checkActiveSession: () => Promise<Models.Session | null>;
+  checkActiveSession: () =>
+    | Promise<void>
+    | Promise<boolean | undefined>
+    | Promise<Models.Session | null>;
   deleteSessions: () => Promise<void>;
   loading: boolean;
   register: (
@@ -55,7 +58,7 @@ export interface AuthContextType {
   logIn: (
     email: string,
     password: string
-  ) => Promise<Models.Session | undefined>;
+  ) => Promise<void> | Promise<Models.Session | undefined>;
   signOut: () => Promise<void>;
   errors: string;
 }
