@@ -10,6 +10,7 @@ const AuthContext = React.createContext<AuthContextType>({
   register: async () => {},
   logIn: async () => ({} as Models.Session),
   signOut: async () => {},
+  errors: "",
 });
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
