@@ -27,8 +27,7 @@ export interface FormInputPropsType {
   errors?: string | undefined;
 }
 
-
-
-
-
-
+export interface SuccessPagePropsType {
+  user: unknown | null;
+  signOut: () => Promise<void>;
+}
