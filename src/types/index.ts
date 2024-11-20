@@ -28,7 +28,7 @@ export interface FormInputPropsType {
 }
 
 export interface SuccessPagePropsType {
-  user: unknown | null;
+  user: { name: string } | null;
   signOut: () => Promise<void>;
 }
 
