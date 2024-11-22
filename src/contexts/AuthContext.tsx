@@ -33,11 +33,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       setLoading(true);
 
       const currentUser = await account.get();
-      setUser(currentUser);
       setIsAuthenticated(true);
-    } catch (error) {
-      console.log(error);
+      setUser(currentUser);
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      setUser(null);
       setIsAuthenticated(false);
+      console.log("Check Current User Errors: ", error.message);
     } finally {
       setLoading(false);
     }
@@ -51,8 +54,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       const session = await account.getSession("current");
       return session !== null;
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
+      if (error.code === 401) {
+        return false;
+      }
+
+      console.log("Check Active Session Errors: ", error.message);
       setErrors(error.message);
     }
   };
@@ -66,12 +75,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           await account.deleteSession(session.$id);
         })
       );
+
+      console.log("All sessions deleted successfully");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
+      console.log("Delete Session Errors: ", error.message);
       setErrors(error.message);
     }
   };
-
   const register = async (
     email: string,
     password: string,
@@ -83,8 +94,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       await account.create(ID.unique(), email, password, fullName);
       await logIn(email, password);
 
+      await checkCurrentUser();
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
+      console.log("Register Errors: ", error.message);
       setErrors(error.message);
     } finally {
       setLoading(false);
@@ -102,7 +116,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log(error);
+      console.log("Log In Errors: ", error.message);
       setErrors(error.message);
     } finally {
       setLoading(false);
@@ -118,6 +132,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
+      console.log("Sign Out Errors: ", error.message);
       setErrors(error.message);
     }
   };
