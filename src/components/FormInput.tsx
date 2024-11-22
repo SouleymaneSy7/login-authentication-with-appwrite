@@ -18,7 +18,9 @@ const FormInput: React.FC<FormInputPropsType> = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={inputID}>{inputLabel}</label>
+      <label htmlFor={inputID} className="font-fw-semi-bold">
+        {inputLabel}
+      </label>
 
       <Inputs
         id={inputID}
@@ -27,12 +29,16 @@ const FormInput: React.FC<FormInputPropsType> = ({
         value={inputValue}
         onChange={inputSetter}
         aria-describedby={inputID}
-        required
         autoComplete={inputType === "password" ? "true" : "false"}
+        className={
+          errors
+            ? "focus-visible:outline-none w-full h-[42px] lg:h-[52px] text-red-clr bg-input-errors-bg-clr border-2 border-red-clr font-fw-semi-bold placeholder:font-fw-regular placeholder:text-input-text-clr  px-[14px] rounded-border-radius-sm"
+            : "w-full h-[42px] lg:h-[52px] bg-input-bg-clr text-dark-text-clr border-2 border-transparent font-fw-semi-bold placeholder:font-fw-regular placeholder:text-input-text-clr  px-[14px] rounded-border-radius-sm"
+        }
       />
 
       {errors && (
-        <span id={inputID} role="alert" className="text-red-clr">
+        <span id={inputID} role="alert" className="text-red-clr text-fs-errors">
           {errors}
           <VisuallyHidden>{errors}</VisuallyHidden>
         </span>
