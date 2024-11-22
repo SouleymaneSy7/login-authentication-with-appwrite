@@ -7,6 +7,7 @@ export default {
       sm: "640px",
       md: "768px",
       lg: "1024px",
+      xlg: "1800px",
     },
 
     fontFamily: {
@@ -39,8 +40,15 @@ export default {
         "input-errors-bg-clr": "var(--input-errors-bg-clr)",
         "modal-container-bg-clr": "var(--modal-container-bg-clr)",
         "input-text-clr": "var(--input-text-clr)",
-        "text-dark-clr": "var(--text-dark-clr)",
+        "dark-text-clr": "var(--dark-text-clr)",
+        "white-text-clr": "var(--white-text-clr)",
         "text-accent-clr": "var(--accent-text-clr)",
+      },
+
+      borderRadius: {
+        "border-radius-sm": "var(--border-radius-sm)",
+        "border-radius-md": "var(--border-radius-md)",
+        "border-radius-lg": "var(--border-radius-lg)",
       },
     },
   },
