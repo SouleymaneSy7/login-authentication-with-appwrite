@@ -21,15 +21,23 @@ const Success: React.FC<SuccessPagePropsType> = ({ user, signOut }) => {
   ];
 
   return (
-    <main>
+    <main className="w-full h-full max-w-[448px] mx-auto mt-32 flex flex-col justify-start items-center lg:max-w-[600px]">
       <Heading
         level="h1"
         className="text-fs-heading-lg text-center font-fw-semi-bold"
       >
         Welcome 👋, {user?.name}
       </Heading>
-      <p className="text-center">{getRandomContent(welcomeMessages)}</p>
-      <Buttons type="button" onClick={signOut}>
+
+      <p className="text-center text-fs-body font-fw-semi-bold text-dark-text-clr mt-2">
+        {getRandomContent(welcomeMessages)}
+      </p>
+
+      <Buttons
+        type="button"
+        onClick={signOut}
+        className="w-full max-w-[260px] mx-auto bg-dark-bg-clr text-white-text-clr text-fs-body font-fw-semi-bold tracking-tighter h-[42px] rounded-border-radius-sm mt-8 lg:h-[52px]"
+      >
         Sign Out
       </Buttons>
     </main>
