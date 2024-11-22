@@ -23,7 +23,7 @@ const LogInPage: React.FC = () => {
     event.preventDefault();
 
     if (!email && !password) {
-      setFormErrors("Form input errors");
+      setFormErrors("Please fill in all fields");
     }
 
     if (!isValidEmail(email)) {
@@ -48,7 +48,7 @@ const LogInPage: React.FC = () => {
       <Images />
 
       <div className="lg:w-1/2 flex items-center justify-center">
-        <main className="w-full max-w-[448px] mx-auto pb-12 lg:pb-0">
+        <main className="w-full max-w-[448px] mx-auto pb-12 md:max-w-[530px] lg:pb-0">
           <header>
             <Heading level="h1" className="text-fs-heading-lg text-center">
               Welcome Back

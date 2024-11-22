@@ -66,7 +66,7 @@ const RegisterPage: React.FC = () => {
       <Images />
 
       <div className="lg:w-1/2 flex items-center justify-center">
-        <main className="w-full max-w-[448px] mx-auto pb-12 lg:pb-0">
+        <main className="w-full max-w-[448px] md:max-w-[530px] mx-auto pb-12 lg:pb-0">
           <header>
             <Heading level="h1" className="text-fs-heading-lg text-center">
               Create An Account
@@ -120,7 +120,7 @@ const RegisterPage: React.FC = () => {
 
           {errors ? (
             <React.Fragment>
-              <p className="text-red-clr">{errors}</p>
+              <p className="text-red-clr text-fs-errors font-fw-semi-bold">{errors}</p>
             </React.Fragment>
           ) : (
             ""

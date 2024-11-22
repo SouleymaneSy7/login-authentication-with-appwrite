@@ -38,7 +38,11 @@ const FormInput: React.FC<FormInputPropsType> = ({
       />
 
       {errors && (
-        <span id={inputID} role="alert" className="text-red-clr text-fs-errors">
+        <span
+          id={inputID}
+          role="alert"
+          className="text-red-clr text-fs-errors font-fw-semi-bold -mt-1"
+        >
           {errors}
           <VisuallyHidden>{errors}</VisuallyHidden>
         </span>

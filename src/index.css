@@ -36,7 +36,7 @@
   --fs-body: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
   --fs-input-placeholder: var(--fs-small);
   --fs-forgot-password: var(--fs-small);
-  --fs-errors: var(--fs-x-small);
+  --fs-errors: var(--fs-small);
 
   /* Font Weight */
   --fw-regular: 400;
