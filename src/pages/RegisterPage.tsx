@@ -8,6 +8,7 @@ import Heading from "../components/common/Heading";
 import FormInput from "../components/FormInput";
 
 import isValidEmail from "../utils/isValidEmail";
+import Images from "../components/Images";
 
 const RegisterPage: React.FC = () => {
   const { register, errors, loading, checkActiveSession, deleteSessions } =
@@ -61,59 +62,72 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <main>
-      <header>
-        <Heading level="h1">Create An Account</Heading>
-        <p>
-          Already have an account?{" "}
-          <Link className="underline" to={"/"}>
-            Log In
-          </Link>
-        </p>
-      </header>
+    <div className="w-full h-full  lg:flex lg:flex-row-reverse">
+      <Images />
 
-      <form onSubmit={handleRegister}>
-        <FormInput
-          ID="full-name-id"
-          inputType="text"
-          inputLabel="Full Name"
-          inputPlaceholder="Enter your full name"
-          inputSetter={(event) => setFullName(event.target.value)}
-          inputValue={fullName}
-          errors={fullNameErrors}
-        />
+      <div className="lg:w-1/2 flex items-center justify-center">
+        <main className="w-full max-w-[448px] mx-auto pb-12 lg:pb-0">
+          <header>
+            <Heading level="h1" className="text-fs-heading-lg text-center">
+              Create An Account
+            </Heading>
+            <p className="text-center">
+              Already have an account?{" "}
+              <Link className="underline font-fw-semi-bold " to={"/"}>
+                Log In
+              </Link>
+            </p>
+          </header>
 
-        <FormInput
-          ID="email-id"
-          inputType="email"
-          inputLabel="Email"
-          inputPlaceholder="Enter your email"
-          inputSetter={(event) => setEmail(event.target.value)}
-          inputValue={email}
-          errors={emailErrors}
-        />
+          <form
+            onSubmit={handleRegister}
+            className="flex flex-col gap-4 mt-8 lg:mt-12"
+          >
+            <FormInput
+              ID="full-name-id"
+              inputType="text"
+              inputLabel="Full Name"
+              inputPlaceholder="Enter your full name"
+              inputSetter={(event) => setFullName(event.target.value)}
+              inputValue={fullName}
+              errors={fullNameErrors}
+            />
 
-        <FormInput
-          ID="password-id"
-          inputType="password"
-          inputLabel="Password"
-          inputPlaceholder="Enter your password"
-          inputSetter={(event) => setPassword(event.target.value)}
-          inputValue={password}
-          errors={passwordErrors}
-        />
+            <FormInput
+              ID="email-id"
+              inputType="email"
+              inputLabel="Email"
+              inputPlaceholder="Enter your email"
+              inputSetter={(event) => setEmail(event.target.value)}
+              inputValue={email}
+              errors={emailErrors}
+            />
 
-        <Button type="submit">{loading ? "Signing Up..." : "Sign Up"}</Button>
-      </form>
+            <FormInput
+              ID="password-id"
+              inputType="password"
+              inputLabel="Password"
+              inputPlaceholder="Enter your password"
+              inputSetter={(event) => setPassword(event.target.value)}
+              inputValue={password}
+              errors={passwordErrors}
+            />
 
-      {errors ? (
-        <React.Fragment>
-          <p className="text-red-clr">{errors}</p>
-        </React.Fragment>
-      ) : (
-        ""
-      )}
-    </main>
+            <Button type="submit">
+              {loading ? "Signing Up..." : "Sign Up"}
+            </Button>
+          </form>
+
+          {errors ? (
+            <React.Fragment>
+              <p className="text-red-clr">{errors}</p>
+            </React.Fragment>
+          ) : (
+            ""
+          )}
+        </main>
+      </div>
+    </div>
   );
 };
 
