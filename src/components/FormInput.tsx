@@ -26,8 +26,6 @@ const FormInput: React.FC<FormInputPropsType> = ({
         placeholder={inputPlaceholder}
         value={inputValue}
         onChange={inputSetter}
-        aria-invalid={!!errors}
-        disabled={!!errors}
         aria-describedby={inputID}
         required
         autoComplete={inputType === "password" ? "true" : "false"}
