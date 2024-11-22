@@ -51,6 +51,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const checkActiveSession = async () => {
+    setErrors("");
+
     try {
       const session = await account.getSession("current");
       return session !== null;
@@ -67,6 +69,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const deleteSessions = async () => {
+    setErrors("");
+
     try {
       const sessions = await account.listSessions();
 
@@ -89,6 +93,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     fullName: string
   ) => {
     try {
+      setErrors("");
       setLoading(true);
 
       await account.create(ID.unique(), email, password, fullName);
@@ -107,6 +112,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const logIn = async (email: string, password: string) => {
     try {
+      setErrors("");
       setLoading(true);
 
       await account.createEmailPasswordSession(email, password);
@@ -125,6 +131,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const signOut = async () => {
     try {
+      setErrors("");
+      setLoading(true);
+
       await account.deleteSession("current");
       setUser(null);
 
@@ -134,6 +143,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     } catch (error: any) {
       console.log("Sign Out Errors: ", error.message);
       setErrors(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
